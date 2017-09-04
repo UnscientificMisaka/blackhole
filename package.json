@@ -1,0 +1,11 @@
+{
+  "name": "blackhole",
+  "version": "0.0.0",
+  "description": "Morgan call it blackhole",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "linrunze@youzan.com",
+  "license": "ISC"
+}
