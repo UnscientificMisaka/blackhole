@@ -7,5 +7,5 @@ fs.readdirSync(__dirname).filter(model => {
     require(`${model}`);
 })
 
-exports.User = mongoose.model('User');
+// exports.User = mongoose.model('User');
 exports.Superman = mongoose.model('Superman');
