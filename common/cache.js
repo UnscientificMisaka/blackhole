@@ -1,13 +1,21 @@
 const redis = require('./redis');
 
 exports.get = (key) => {
-    redis.get(key.toString(), (err, res) => {
-        if (err) {
-            console.log(err);
-            return callback(err);
-        }
-        return callback(res);
-    });
+    // redis.get(key.toString(), (err, res) => {
+    //     if (err) {
+    //         console.log(err);
+    //         return callback(err);
+    //     }
+    //     return callback(res);
+    // });
+    return new Promise((resolve, reject) => {
+        redis.get(key.toString(), (err, res) => {
+            if (err) {
+                reject(err);
+            }
+            resolve(res);
+        })
+    })
 };
 
 exports.set = (key, value) => {

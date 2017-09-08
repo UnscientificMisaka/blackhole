@@ -1,0 +1,23 @@
+<%- include('./common/header') %>
+<div class="container">
+    <div class="control">
+        <form id="table" method="post" action="/control/add">
+            <input name="table" placeholder="table name"/>
+            <div class="group">
+                <input name="field" placeholder="field" />
+                <select name="type" placeholder="choose field type">
+                    <option value="String">String</option>
+                    <option value="Array">Array</option>
+                    <option value="Number">Number</option>
+                    <option value="Boolean">Boolean</option>
+                    <option value="Date">Date</option>
+                    <option value="ObjectId">ObjectId</option>
+                </select>
+            </div>
+            <input type="submit" value="创建表"/>
+        </form>
+        <button id="add">添加字段</button>
+    </div>
+</div>
+<script src="/public/js/index.js"></script>
+<%- include('./common/footer') %>
