@@ -15,16 +15,16 @@
 ![](./screenshots/entry.png)
 ![](./screenshots/index.png)
 ## API Docs
-* /api/collect/:table GET  
-key | required | format  
----- | ---  
-startDate | false | timestamp  
-endDate |  false | timestamp
+ /api/collect/:table GET  
+|key | required | format |
+|---- | ---  | ---|
+|startDate | false | timestamp|    
+|endDate |  false | timestamp|
 
-* /api/collect/:table POST   
-key | required | format  
----- | ---  
-content | true | arbitrarily  
+ /api/collect/:table POST   
+|key | required | format  |
+|---- | ---  | ---  |
+|content | true | at will  |
 
 ## LICENSE
 MIT
