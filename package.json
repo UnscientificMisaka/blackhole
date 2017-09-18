@@ -7,5 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "linrunze@youzan.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express-winston": "^2.4.0",
+    "log4js": "^2.3.3",
+    "winston": "^2.3.1"
+  }
 }

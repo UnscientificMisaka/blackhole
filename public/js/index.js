@@ -5,4 +5,4 @@ Handle.prototype.addField = function () {
 }
 
 var blackhole = new Handle();
-document.getElementById('add').onclick = blackhole.addField;
+// document.getElementById('add').onclick = blackhole.addField;

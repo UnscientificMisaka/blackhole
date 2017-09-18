@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const superman = require('./controllers/superman');
 const control = require('./controllers/control');
+const store = require('./controllers/store');
 const limit = require('./middlewares/limit');
 
-router.post('/api/superman/collect', limit.dayLimit, superman.collect);
+router.post('/api/collect/:table', limit.dayLimit, store.storeData);
+router.get('/api/collect/:table', limit.dayLimit, store.getData);
 
-router.get('/control', control.renderControl);
+router.get('/', control.renderControl);
 router.post('/control/add', control.createTable);
+
 
 module.exports = router;

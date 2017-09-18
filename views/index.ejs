@@ -1,13 +1,21 @@
 <%- include('./common/header') %>
 <%- include('./common/error') %>
 <%- include('./common/success') %>
-<div class="container">
+<div id="blackhole">
+    
+    <div class="blackhole-hover">
+        <span>进入</span>
+    </div>
+    <div class="container">
     <div class="control">
         <form id="table" method="post" action="/control/add">
-            <input name="table" placeholder="table name"/>
+            <input type="text" name="table" placeholder="table name"/>
             <input type="submit" value="创建表"/>
         </form>
     </div>
 </div>
+    <canvas id="canvas"></canvas>
+</div>
 <script src="/public/js/index.js"></script>
+<script src="/public/js/blackhole.js"></script>
 <%- include('./common/footer') %>

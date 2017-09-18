@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/');
-const tool = require('../middlewares/tool');
 
 const transporter = nodemailer.createTransport({
     "host": config.mail.host,

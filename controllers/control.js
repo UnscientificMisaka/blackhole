@@ -3,20 +3,27 @@ const path = require('path');
 const cp = require('child_process');
 const router = require('express').Router();
 
+const CREATE_BASH = path.join(__dirname, '../bash/create.sh');
+
 exports.renderControl = (req, res) => {
-    return res.render('control');
+    return res.render('index');
 };
 
 exports.createTable = (req, res) => {
     const table = req.body.table.trim();
-    cp.exec(`./create.sh ${table}`, (error, stdout, stderr) => {
+    
+    cp.exec(`${CREATE_BASH} ${table}`, (error, stdout, stderr) => {
         if (error) {
-            return req.flash('error', error)
+            req.flash('error', error)
+            return res.redirect('back');
         }
         let result = JSON.parse(stdout.match(/\{[\s\S]+\}/g)[0])
-        if (result.ok) {
-            return req.flash('error', result.errmsg);
+        if (!result.ok) {
+            req.flash('error', result.errmsg);
+            return res.redirect('back');
         }
-        return req.flash('success', '创建成功')
+        
+        req.flash('success', '创建成功');
+        return res.redirect('back');
     })
 };
