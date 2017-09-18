@@ -1,21 +1,30 @@
 # BlackHole
 
-> 大哥亲自命名的黑洞，目的是收集大哥的打包工具xxx的使用信息，但并不对数据进行分析，只是存储。
+> 这个小项目很懒，什么都没有介绍。
 
 ## TODO
-* [x] 自动化建表
-* [ ] 自动路由，简单接口
-* [ ] 多个项目工具等收集数据等聚合统计分析
-* [ ] 每个IP一天限制1000条
+* [x] 控制台建表
+* [x] IP限制调用次数
+* [x] 日志
+* [ ] 多个表聚合统计分析
+* [ ] 通知方式太差，抛弃req.flash
+* [ ] 动画有点中二，要换一个
 
-## Features
-* 获取数据需要校验token
-* 获取数据默认日期最近1000条，可输入日期查询不同时间段的
-* 存储数据一个IP一天限制50条
 
+## ScreenShots
+![](./screenshots/entry.png)
+![](./screenshots/index.png)
 ## API Docs
-* /api/collect/:table GET
-* /api/collect/:table POST
+* /api/collect/:table GET  
+key | required | format  
+---- | ---  
+startDate | false | timestamp  
+endDate |  false | timestamp
+
+* /api/collect/:table POST   
+key | required | format  
+---- | ---  
+content | true | arbitrarily  
 
 ## LICENSE
 MIT
