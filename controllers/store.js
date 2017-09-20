@@ -21,20 +21,19 @@ exports.storeData = (req, res) => {
         if (collections.indexOf(req.params.table) === -1) {
             return res.json({ code: 0, msg: '无效的表名'})
         }
+        const IP = tool.getIP(req);
+        mongo.connect().then(db => {
+            return mongo.store(db, req.params.table, IP, req.body.content);
+        }).then(data => {
+            if (data.result.ok) {
+                return res.json({ code: data.result.ok, msg: '存储成功' });
+            }
+            return res.json({ code: 0, msg: '存储失败' });
+        }).catch((err) => {
+            console.log(err)
+            return res.json({ code: 0, msg: '存储失败' });
+        })
     });
-
-    const IP = tool.getIP(req);
-    mongo.connect().then(db => {
-        return mongo.store(db, req.params.table, IP, req.body.content);
-    }).then(data => {
-        if (data.result.ok) {
-            return res.json({ code: data.result.ok, msg: '存储成功' });
-        }
-        return res.json({ code: 0, msg: '存储失败' });
-    }).catch((err) => {
-        console.log(err)
-        return res.json({ code: 0, msg: '存储失败' });
-    })
 };
 
 exports.getData = (req, res) => {
