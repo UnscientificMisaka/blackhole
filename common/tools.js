@@ -1,10 +1,8 @@
 exports.getIP = (req) => {
-    let ip = ''; 
     if (req.headers['x-forwarded-for']) {
-        ip =  req.headers['x-forwarded-for'].split(',')[0];
+        return req.headers['x-forwarded-for'].split(',')[0];
     } 
-    ip = req.connection.remoteAddress ||
+    return req.connection.remoteAddress ||
         req.socket.remoteAddress ||
-        req.connection.socket.remoteAddress 
-    return ip;
+        req.connection.socket.remoteAddress; 
 };

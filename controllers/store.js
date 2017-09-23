@@ -41,11 +41,20 @@ exports.getData = (req, res) => {
         return res.json({ code: 0, msg: '无效的表名' });
     }
     
-    const { startDate, endDate } = req.query;
+    const { startDate, endDate, path, count } = req.query;
     mongo.connect().then(db => {
-        return mongo.get(db, req.params.table, +startDate, +endDate);
+        return mongo.get(db, req.params.table, +count, +startDate, +endDate);
     }).then(data => {
-        return res.json({ code: 1, msg: data})
+        let arr = [];
+        if (path) {
+            data.forEach(i => {
+                if (i[path] !== undefined) {
+                    arr.push(i[path])
+                }
+            })
+            return res.json({ code: 1, msg: arr});
+        }
+        return res.json({ code: 1, msg: data});
     }).catch(err => {
         console.log(err);
         return res.json({ code: 0, msg: '获取失败' });

@@ -24,12 +24,12 @@ exports.store = (db, table, ip, content) => {
     });
 };
 
-exports.get = (db, table, startDate, endDate) => {
+exports.get = (db, table, count = 1000, startDate, endDate) => {
     return new Promise((resolve, reject) => {
         if (startDate && endDate) {
             db.collection(table)
             .find({create_at: {$gt:startDate,$lt:endDate}})
-            .limit(1000)
+            .limit(count)
             .toArray((err, result) => {
                 if (err) {
                     reject(err);
@@ -40,7 +40,7 @@ exports.get = (db, table, startDate, endDate) => {
         db.collection(table)
         .find()
         .sort({create_at: -1})
-        .limit(1000)
+        .limit(count)
         .toArray((err, result) => {
             if (err) {
                 reject(err);
